@@ -113,4 +113,8 @@ export class AppComponent implements OnInit {
       localStorage.setItem(this.localStorageKey, JSON.stringify(this.data));
     }
   }
+
+  clearLocalStorage(): void {
+    localStorage.clear();
+  }
 }
