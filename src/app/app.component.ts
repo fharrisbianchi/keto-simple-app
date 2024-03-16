@@ -3,6 +3,7 @@ import { RecipeApiService } from './services/recipe-api.service';
 import { HttpClient } from '@angular/common/http';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Recipe } from './interfaces/interfaces';
+import { recipeData } from '../app/mocks/service.mock';
 
 @Component({
   selector: 'app-root',
@@ -40,11 +41,11 @@ export class AppComponent implements OnInit {
   async getRecipesData() {
     try {
       this.isLoading = true;
-      const response = await this.recipeApiService.getData();
-      this.data = response;
-
+      //uncomment this to avoid the error bandwith service
+      //const response = await this.recipeApiService.getData();
+      this.data = recipeData;
       // Save data in localstorage
-      localStorage.setItem(this.localStorageKey, JSON.stringify(response));
+      localStorage.setItem(this.localStorageKey, JSON.stringify(this.data));
     } catch (error) {
       console.error('Error fetching recipe data:', error);
     } finally {
